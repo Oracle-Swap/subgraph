@@ -9,12 +9,12 @@ const USDC_WETH_PAIR = '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc' // created 1
 const DAI_WETH_PAIR = '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11' // created block 10042267
 const USDT_WETH_PAIR = '0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852' // created block 10093341
 
-const ftso_address = Address.fromString('0x6D222fb4544ba230d4b90BA1BfC0A01A94E6cB23')
+let ftsoAddress = Address.fromString('0x6D222fb4544ba230d4b90BA1BfC0A01A94E6cB23')
 
 export function getEthPriceInUSD(): BigDecimal {
-  let ftso = FtsoRegistry.bind(ftso_address)
-  let oracle_ret = ftso.getCurrentPrice("SGB")
-  return oracle_ret.value0.toBigDecimal().div(BigDecimal.fromString("100000"))
+  let ftso = FtsoRegistry.bind(ftsoAddress)
+  let oracleRet = ftso.getCurrentPrice("SGB")
+  return oracleRet.value0.toBigDecimal().div(BigDecimal.fromString("100000"))
 
   // fetch eth prices for each stablecoin
   // let daiPair = Pair.load(DAI_WETH_PAIR) // dai is token0
